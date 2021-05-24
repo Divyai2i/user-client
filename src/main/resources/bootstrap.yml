@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: userApplication
+  cloud:
+    vault:
+      token: s.hXWUEzOK4BYmg0DgdaWA93wj
+      host: 127.0.0.1
+      port: 8200
+      scheme: http
+    config:
+      uri: http://localhost:8082/
+  profiles:
+    active : production
