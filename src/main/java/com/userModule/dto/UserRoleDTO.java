@@ -1,9 +1,9 @@
-package com.userModule.user.dto;
+package com.userModule.dto;
 
 import java.io.Serializable;
 import java.util.Set;
 
-import com.userModule.role.model.Role;
+import com.userModule.model.Role;
 
 public class UserRoleDTO implements Serializable{
 	private long userId;
@@ -56,6 +56,4 @@ public class UserRoleDTO implements Serializable{
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
-	
-	
 }

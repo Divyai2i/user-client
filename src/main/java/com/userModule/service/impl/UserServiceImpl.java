@@ -1,4 +1,4 @@
-package com.userModule.user.service.impl;
+package com.userModule.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,14 +6,16 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.userModule.user.dto.UserRoleDTO;
-import com.userModule.user.model.User;
-import com.userModule.user.repository.UserRepository;
-import com.userModule.user.service.UserService;
+import com.userModule.dto.UserRoleDTO;
+import com.userModule.model.User;
+import com.userModule.repository.UserRepository;
+import com.userModule.service.UserService;
 
 @Transactional
 @Service
@@ -22,13 +24,16 @@ public class UserServiceImpl implements UserService {
 	@Autowired
     private UserRepository userRepository;
 	
-	/*@Bean
-    public ModelMapper modelMapper() {
-       ModelMapper modelMapper = new ModelMapper();
-       return modelMapper;
-    }*/
-	
 	private ModelMapper modelMapper = new ModelMapper();
+	
+	@Autowired
+	private AmqpTemplate amqpTemplate;
+	
+	@Value("${userApplication.rabbitmq.exchange}")
+	private String exchange;
+	
+	@Value("${userApplication.rabbitmq.routingkey}")
+	private String routingkey;
      
     public String addUser(UserRoleDTO userRoleDTO)  {  
     	User user = new ModelMapper().map(userRoleDTO, User.class);
@@ -68,10 +73,13 @@ public class UserServiceImpl implements UserService {
 		userRoleDTO.setAccount(user.getAccount());
 		userRoleDTO.setPassword(user.getPassword());
 		userRoleDTO.setEmail(user.getEmail());
-		/*Location location = user.getLocation();
-		userLocationDTO.setLat(location.getLat());
-		userLocationDTO.setLng(location.getLng());
-		userLocationDTO.setPlace(location.getPlace());*/
 		return userRoleDTO;
+	}
+    
+    public void send(UserRoleDTO userRoleDTO) {
+    	System.out.println("Inside send...."+exchange+"..."+exchange);
+    	amqpTemplate.convertAndSend(exchange, routingkey, userRoleDTO);
+		System.out.println("Send msg = " + userRoleDTO);
+	    
 	}
 }

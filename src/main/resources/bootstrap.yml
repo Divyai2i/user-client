@@ -8,6 +8,31 @@ spring:
       port: 8200
       scheme: http
     config:
-      uri: http://localhost:8082/
+      uri: http://127.0.0.1:8082/
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      config:
+        enabled: true
+      discovery:
+        healthCheckPath: /actuator/health
+        healthCheckInterval: 15s
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  main:
+     allow-bean-definition-overriding: true
   profiles:
     active : production
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+userApplication:
+  rabbitmq:
+    exchange: userApplication.exchange
+    queue: userApplication.queue
+    routingkey: userApplication.routingkey

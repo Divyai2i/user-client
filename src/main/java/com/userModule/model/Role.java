@@ -1,6 +1,4 @@
-package com.userModule.role.model;
-
-import com.userModule.user.model.User;
+package com.userModule.model;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -19,6 +17,8 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.sun.istack.NotNull;
+
+import com.userModule.model.User;
 
 @Entity
 @Table(name = "role")

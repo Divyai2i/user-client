@@ -1,4 +1,4 @@
-package com.userModule.user.controller;
+package com.userModule.controller;
 
 import java.util.Collection;
 import java.util.List;
@@ -23,9 +23,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.userModule.MethodExecutionTime;
-import com.userModule.user.controller.FeignProxy;
-import com.userModule.user.dto.UserRoleDTO;
-import com.userModule.user.service.UserService;
+/*import com.userModule.controller.FeignProxy;*/
+import com.userModule.dto.UserRoleDTO;
+import com.userModule.service.UserService;
 
 @RestController  
 @RequestMapping("/api/v1/users")
@@ -34,10 +34,10 @@ public class UserController {
 	@Autowired
 	UserService userService;
 	
-	@Autowired
-	FeignProxy proxyService;
+	/*@Autowired
+	FeignProxy proxyService;*/
 	
-	@RequestMapping("/dashboard/feign/{id}")
+	/*@RequestMapping("/dashboard/feign/{id}")
     public UserRoleDTO findById(@PathVariable Long id){
        return proxyService.findById(id);
     }
@@ -45,7 +45,7 @@ public class UserController {
 	@RequestMapping("/dashboard/feign/peers")
     public  Collection<UserRoleDTO> findAll(){
         return proxyService.findAll();
-    }
+    }*/
 	
 	@MethodExecutionTime
 	@PostMapping   
@@ -90,6 +90,13 @@ public class UserController {
 		userRoleDTOOld.setEmail(userRoleDTO.getEmail());
 	    userService.addUser(userRoleDTOOld);
 	    return "Updated successfully";
+	}
+	
+	@GetMapping("sendMsg/{id}")
+	public String sendMsgToRabbitMQ(@PathVariable("id") long id) {
+		UserRoleDTO userRoleDTO = userService.getUserById(id);
+		userService.send(userRoleDTO);
+		return "Message sent to the RabbitMQ UserApplication Successfully";
 	}
 }
 

@@ -1,4 +1,4 @@
-package com.userModule.user.model;
+package com.userModule.model;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -19,7 +19,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.sun.istack.NotNull;
-import com.userModule.role.model.Role;
+import com.userModule.model.Role;
 
 @Entity
 @Table(name = "user")

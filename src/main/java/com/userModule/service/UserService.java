@@ -1,8 +1,8 @@
-package com.userModule.user.service;
+package com.userModule.service;
  
 import java.util.List;
 
-import com.userModule.user.dto.UserRoleDTO;
+import com.userModule.dto.UserRoleDTO;
 
 public interface UserService {
 	
@@ -13,5 +13,7 @@ public interface UserService {
 	public UserRoleDTO getUserById(long id);
 	
 	public String deleteUserById(long id);
+	
+	public void send(UserRoleDTO userRoleDTO);
      
 }

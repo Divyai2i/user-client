@@ -1,19 +1,19 @@
-package com.userModule.user.controller;
+package com.userModule.controller;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.userModule.user.dto.UserRoleDTO;
+import com.userModule.dto.UserRoleDTO;
 
-@FeignClient(name="UserSearch", url="localhost:8000")
+@FeignClient(name="user-search", url="http://localhost:8080")
 public interface FeignProxy {
 
    @RequestMapping("/user/find/{id}")
    public UserRoleDTO findById(@PathVariable(value="id") Long id);
 
    @RequestMapping("/user/findall")
-   public Collection<UserRoleDTO> findAll();
+   public List<UserRoleDTO> findAll();
 }
