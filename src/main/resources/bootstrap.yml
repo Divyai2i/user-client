@@ -1,14 +1,16 @@
 spring:
   application:
     name: userApplication
+  profiles:
+    active : production
   cloud:
+    config:
+      uri: http://127.0.0.1:8082/
     vault:
       token: s.hXWUEzOK4BYmg0DgdaWA93wj
       host: 127.0.0.1
       port: 8200
       scheme: http
-    config:
-      uri: http://127.0.0.1:8082/
     consul:
       host: 127.0.0.1
       port: 8500
@@ -24,8 +26,6 @@ spring:
     password: guest
   main:
      allow-bean-definition-overriding: true
-  profiles:
-    active : production
 management:
   endpoints:
     web:

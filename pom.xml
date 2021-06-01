@@ -19,26 +19,14 @@
 		<spring-cloud.version>2020.0.1</spring-cloud.version>
 	</properties>
 	<dependencies>
-      	<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-actuator</artifactId>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 		<dependency>
-          <groupId>org.springframework.cloud</groupId>
-          <artifactId>spring-cloud-starter-bootstrap</artifactId>
-        </dependency>
-		<dependency>
-	        <groupId>org.springframework.cloud</groupId>
-	        <artifactId>spring-cloud-starter-vault-config</artifactId>
-        </dependency>
-      	<dependency>
-		    <groupId>org.springframework.cloud</groupId>
-		    <artifactId>spring-cloud-starter-config</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-rest</artifactId>
 		</dependency>
-		<dependency>
-	        <groupId>org.springframework.boot</groupId>
-	        <artifactId>spring-boot-starter-data-rest</artifactId>
-	    </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
@@ -48,105 +36,111 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>  
-			<groupId>org.springframework.boot</groupId>  
-			<artifactId>spring-boot-starter-web</artifactId>  
-		</dependency> 
-		<dependency>  
-			<groupId>org.springframework.boot</groupId>  
-			<artifactId>spring-boot-starter-tomcat</artifactId>  
-			<scope>provided</scope>  
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<dependency>  
-			<groupId>org.springframework.boot</groupId>  
-			<artifactId>spring-boot-starter-data-jpa </artifactId>  
-			<exclusions>  
-				<exclusion>  
-					<groupId>com.zaxxer</groupId>  
-					<artifactId>HikariCP </artifactId>  
-				</exclusion>  
-			</exclusions>  
-		</dependency>   
-		<dependency>  
-			<groupId>mysql</groupId>  
-			<artifactId>mysql-connector-java</artifactId>  
-		</dependency> 
-		<dependency>  
-			<groupId>org.springframework</groupId>  
-			<artifactId>spring-webmvc</artifactId>  
+		<!-- Spring Cloud config -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-bootstrap</artifactId>
+		</dependency>
+		<!-- Spring boot Vault config -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-vault-config</artifactId>
+		</dependency>
+		<!-- Spring boot JPA Dependency -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa </artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<!-- ModelMapper Dependency for DTO -->
 		<dependency>
 			<groupId>org.modelmapper</groupId>
 			<artifactId>modelmapper</artifactId>
 			<version>2.4.2</version>
 		</dependency>
-		<dependency>  
-			<groupId>org.springframework.boot</groupId>  
-			<artifactId>spring-boot-devtools</artifactId>  
-			<scope>runtime</scope>  
-		</dependency>  
-		<dependency>  
-			<groupId>org.hibernate.javax.persistence</groupId>  
-			<artifactId>hibernate-jpa-2.1-api</artifactId>  
-			<version>1.0.0.Final</version>  
-		</dependency>  
-		<dependency>  
-			<groupId>org.apache.tomcat</groupId>  
-			<artifactId>tomcat-jdbc</artifactId>  
-			<version>9.0.10</version>  
-		</dependency> 
+		<!-- Spring boot Persistance Dependency -->
 		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.1-api</artifactId>
+			<version>1.0.0.Final</version>
 		</dependency>
+		<!-- <dependency> <groupId>com.h2database</groupId> <artifactId>h2</artifactId> 
+			</dependency> -->
+		<!-- Spring Security Dependency -->
 		<dependency>
-	        <groupId>org.springframework.boot</groupId>
-	        <artifactId>spring-boot-starter-security</artifactId>
-	    </dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<!-- AOP Dependency -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
+		<!-- Redis Dependency -->
 		<dependency>
-	        <groupId>org.springframework.boot</groupId>
-	        <artifactId>spring-boot-starter-data-redis</artifactId>
-	    </dependency>
-	    <!-- <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+		<!-- Swagger Dependency -->
+		<dependency>
 			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger-ui</artifactId>
+			<artifactId>springfox-boot-starter</artifactId>
 			<version>3.0.0</version>
+		</dependency>
+		<!-- Feign client Dependency -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-feign</artifactId>
+			<version>1.4.7.RELEASE</version>
 			<scope>compile</scope>
 		</dependency>
-	    <dependency>
-		    <groupId>io.springfox</groupId>
-		    <artifactId>springfox-swagger2</artifactId>
-		    <version>3.0.0</version>
-		    <scope>compile</scope>
-		</dependency> -->
+		<!-- Custom Metrics Dependency -->
 		<dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-boot-starter</artifactId>
-            <version>3.0.0</version>
-		</dependency>
-		<dependency>  
-			<groupId>org.springframework.cloud</groupId>    
-			<artifactId>spring-cloud-starter-feign</artifactId> 
-			<version>1.4.7.RELEASE</version> 
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-	    	<groupId>io.micrometer</groupId>
-	    	<artifactId>micrometer-registry-prometheus</artifactId>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-registry-prometheus</artifactId>
 			<version>1.7.0</version>
 		</dependency>
+		<!-- Consul Dependency -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-consul-discovery</artifactId>
 		</dependency>
+		<!-- RabbitMQ Dependency -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-amqp</artifactId>
 		</dependency>
+		<!-- Elasticsearch Dependencies -->
+		<!-- <dependency> <groupId>org.elasticsearch</groupId> <artifactId>elasticsearch</artifactId> 
+			<version>6.1.2</version> </dependency> <dependency> <groupId>org.elasticsearch.client</groupId> 
+			<artifactId>elasticsearch-rest-high-level-client</artifactId> <version>6.1.2</version> 
+			</dependency> <dependency> <groupId>org.apache.logging.log4j</groupId> <artifactId>log4j-api</artifactId> 
+			<version>2.8.2</version> </dependency> <dependency> <groupId>org.apache.logging.log4j</groupId> 
+			<artifactId>log4j-core</artifactId> <version>2.8.2</version> </dependency> 
+			<dependency> <groupId>org.elasticsearch.client</groupId> <artifactId>elasticsearch-rest-client</artifactId> 
+			<version>6.1.2</version> </dependency> <dependency> <groupId>org.elasticsearch.client</groupId> 
+			<artifactId>elasticsearch-rest-client-sniffer</artifactId> <version>6.1.2</version> 
+			</dependency> -->
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
@@ -160,7 +154,7 @@
 		</dependencies>
 	</dependencyManagement>
 	<build>
-		<!-- <finalName>user-web-services</finalName>  -->
+		<!-- <finalName>user-web-services</finalName> -->
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -168,54 +162,55 @@
 			</plugin>
 		</plugins>
 	</build>
+	<!-- Docker configuration -->
 	<profiles>
-   <profile>
-      <activation>
-         <property>
-            <name>docker</name>
-         </property>
-      </activation>
-      <build>
-         <plugins>
-            <plugin>
-               <groupId>io.fabric8</groupId>
-               <artifactId>docker-maven-plugin</artifactId>
-               <version>0.26.0</version>
-               <extensions>true</extensions>
-               <configuration>
-                  <verbose>true</verbose>
-                  <images>
-                     <image>
-                        <name>${project.artifactId}</name>
-                        <build>
-                           <from>java:8-jdk-alpine</from>
-                           <entryPoint>
-                              <exec>
-                                 <args>java</args>
-                                 <args>-jar</args>
-                                 <args>/maven/${project.artifactId}-${project.version}.jar</args>
-                              </exec>
-                           </entryPoint>
-                           <assembly>
-                              <descriptorRef>artifact</descriptorRef>
-                           </assembly>
-                        </build>
-                     </image>
-                  </images>
-               </configuration>
-               <executions>
-                  <execution>
-                     <id>build</id>
-                     <phase>post-integration-test</phase>
-                     <goals>
-                        <goal>build</goal>
-                     </goals>
-                  </execution>
-               </executions>
-            </plugin>
-         </plugins>
-      </build>
-   </profile>
-</profiles>
+		<profile>
+			<activation>
+				<property>
+					<name>docker</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>io.fabric8</groupId>
+						<artifactId>docker-maven-plugin</artifactId>
+						<version>0.26.0</version>
+						<extensions>true</extensions>
+						<configuration>
+							<verbose>true</verbose>
+							<images>
+								<image>
+									<name>${project.artifactId}</name>
+									<build>
+										<from>java:8-jdk-alpine</from>
+										<entryPoint>
+											<exec>
+												<args>java</args>
+												<args>-jar</args>
+												<args>/maven/${project.artifactId}-${project.version}.jar</args>
+											</exec>
+										</entryPoint>
+										<assembly>
+											<descriptorRef>artifact</descriptorRef>
+										</assembly>
+									</build>
+								</image>
+							</images>
+						</configuration>
+						<executions>
+							<execution>
+								<id>build</id>
+								<phase>post-integration-test</phase>
+								<goals>
+									<goal>build</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
 

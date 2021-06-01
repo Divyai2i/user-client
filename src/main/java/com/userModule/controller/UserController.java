@@ -49,13 +49,14 @@ public class UserController {
 	
 	@MethodExecutionTime
 	@PostMapping   
+	@CacheEvict(value = "users", allEntries=true)
 	public String addUser(@RequestBody UserRoleDTO userRoleDTO)  
 	{    
 		return userService.addUser(userRoleDTO);    
 	}    
 	
 	@MethodExecutionTime
-	@Cacheable(value = "allusers")
+	@Cacheable(value = "users")
 	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping
 	public List<UserRoleDTO> listAllUsers() {
@@ -71,8 +72,7 @@ public class UserController {
 	}
 	
 	@MethodExecutionTime
-	//@CacheEvict(value = "users", allEntries=true)
-	@CacheEvict(value = "users", key = "#id")
+	@CacheEvict(value = "users", allEntries=true)
 	@DeleteMapping("/{id}")
 	public String deleteUserById(@PathVariable("id") long id) {
 	    return userService.deleteUserById(id);
