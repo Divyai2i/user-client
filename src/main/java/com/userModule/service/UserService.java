@@ -15,5 +15,11 @@ public interface UserService {
 	public String deleteUserById(long id);
 	
 	public void send(UserRoleDTO userRoleDTO);
-     
+	
+	public String streams();
+	
+	public String lambda();
+	
+	public String optional();
+	
 }

@@ -98,5 +98,20 @@ public class UserController {
 		userService.send(userRoleDTO);
 		return "Message sent to the RabbitMQ UserApplication Successfully";
 	}
+	
+	@GetMapping("/streams")
+	public String streams() {
+	    return userService.streams();
+	}
+	
+	@GetMapping("/lambda")
+	public String lambda() {
+	    return userService.lambda();
+	}
+	
+	@GetMapping("/optional")
+	public String optional() {
+	    return userService.optional();
+	}
 }
 

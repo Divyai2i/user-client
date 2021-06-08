@@ -25,7 +25,21 @@ spring:
     username: guest
     password: guest
   main:
-     allow-bean-definition-overriding: true
+    allow-bean-definition-overriding: true
+  data:
+    elasticsearch:
+      cluster-name: user-application
+      cluster-nodes: 192.168.0.110:9300
+  datasource:
+    hikari:
+      connection-timeout: 20000
+      minimum-idle: 10
+      maximum-pool-size: 10
+      idle-timeout: 10000
+      max-lifetime: 1000
+      auto-commit: true
+  zipkin:
+    base-url: http://localhost:9411/
 management:
   endpoints:
     web:
@@ -36,3 +50,11 @@ userApplication:
     exchange: userApplication.exchange
     queue: userApplication.queue
     routingkey: userApplication.routingkey
+host: localhost
+port: 1080
+elasticsearch:
+  host: localhost
+  port: 9300
+logging:
+  path: /home/ubuntu/Documents/springboot_app
+  file: spring-boot-elk.log
